@@ -88,7 +88,11 @@
                 <div class="col-12 pt-4 text-center">
                     <button id="save_btn" type="button" class="btn btn-success w-100" dmx-on:click="save_to_sheet.load({})">
                         <span class="spinner-border spinner-border-sm" role="status" dmx-show="save_to_sheet.state.executing"></span>
-                        <i class="fas fa-save"></i> Save data to sheet</button>
+                        <i class="fas fa-save"></i> Save to sheet & download</button>
+                </div>
+                <div class="col-12 pt-4 text-center">
+                    <button id="cancel_btn" class="btn btn-danger w-100"><i class="fas fa-window-close"></i>
+                        Restart</button>
                 </div>
             </div>
         </form>
@@ -96,6 +100,14 @@
 </main>
 
 <script>
+    const cancel_btn = document.getElementById('cancel_btn');
+
+    cancel_btn.addEventListener('click', () => {
+        localStorage.clear();
+        localStorage.setItem('dmxState-faceNumber', '1');
+        window.location.href = '/';
+    });
+    
     function downloadImage() {
         // Get the image name from localStorage
         const imgName = localStorage.getItem('dmxState-final_image').replace(/"/g, '');

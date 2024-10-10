@@ -1,5 +1,12 @@
 const retry_btn = document.getElementById('retry_btn');
 const save_btn = document.getElementById('save_btn');
+const cancel_btn = document.getElementById('cancel_btn');
+
+cancel_btn.addEventListener('click', () => {
+    localStorage.clear();
+    localStorage.setItem('dmxState-faceNumber', '1');
+    window.location.href = '/';
+});
 
 retry_btn.addEventListener('click', () => {
     let faceNumber = localStorage.getItem('dmxState-faceNumber');

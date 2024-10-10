@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cancel_btn.addEventListener('click', () => {
         localStorage.clear();
+        localStorage.setItem('dmxState-faceNumber', '1');
         window.location.href = '/';
     });
 

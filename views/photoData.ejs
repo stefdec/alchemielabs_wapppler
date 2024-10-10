@@ -91,7 +91,7 @@
                         <i class="fas fa-save"></i> Save to sheet & download</button>
                 </div>
                 <div class="col-12 pt-4 text-center">
-                    <button id="cancel_btn" class="btn btn-danger w-100"><i class="fas fa-window-close"></i>
+                    <button id="cancel_btn" class="btn btn-danger w-100" dmx-bind:disabled="save_to_sheet.state.executing"><i class="fas fa-window-close"></i>
                         Restart</button>
                 </div>
             </div>
@@ -107,7 +107,7 @@
         localStorage.setItem('dmxState-faceNumber', '1');
         window.location.href = '/';
     });
-    
+
     function downloadImage() {
         // Get the image name from localStorage
         const imgName = localStorage.getItem('dmxState-final_image').replace(/"/g, '');

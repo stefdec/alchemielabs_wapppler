@@ -1,0 +1,37 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="photoResult" appConnect="local" components="{dmxStateManagement:{},dmxBrowser:{}}" -->
+<div is="dmx-browser" id="browser1"></div>
+<dmx-serverconnect id="sc" url="/api/sc" noload="true" dmx-on:success="ls1.set('id_type',sc.data.id_type);ls1.set('state',sc.data.state);ls1.set('licence_number',sc.data.licence_number);ls1.set('dob',sc.data.dob);ls1.set('expiry',sc.data.expiry);ls1.set('issuance',sc.data.issuance);ls1.set('first_name',sc.data.first_name);ls1.set('last_name',sc.data.last_name);ls1.set('initials',sc.data.initials);ls1.set('street',sc.data.street);ls1.set('city',sc.data.city);ls1.set('state_address',sc.data.state_address);ls1.set('zip_code',sc.data.zip_code);browser1.goto('/photoData')"></dmx-serverconnect>
+
+<dmx-api-action id="extract_text" noload="true" url="/extract_text" dmx-param:imgpath="ls1.data.facePath_1"></dmx-api-action>
+<meta name="ac:route" content="/photoResult">
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 id="pageTitle">Photo</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <img id="imgResult" class="w-50">
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-12 pt-4 text-center">
+                <button id="retry_btn" class="btn btn-warning w-75"><i class="fas fa-undo"></i> Retry</button>
+            </div>
+            <div class="col-12 pt-4 text-center" dmx-show="ls1.data.faceNumber==1">
+                <button id="save_btn" class="btn btn-success w-75"><i class="fas fa-save"></i> Save & continue</button>
+            </div>
+            <div class="col-12 pt-4 text-center" dmx-show="ls1.data.faceNumber==2">
+                <button id="ssssave_btn" class="btn btn-success w-75" dmx-on:click="sc.load({imgpath: ls1.data.facePath_1})" dmx-bind:disabled="sc.state.executing">
+                    <span class="spinner-border spinner-border-sm" role="status" dmx-show="sc.state.executing"></span>
+                    <i class="fas fa-magic"></i> Extract data from ID</button>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+<script src="js/result_btn.js"></script>

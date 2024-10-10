@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "imgpath"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "api",
+        "module": "api",
+        "action": "send",
+        "options": {
+          "url": "http://localhost:3000/extract_text",
+          "params": {
+            "imgpath": "{{$_GET.imgpath}}"
+          },
+          "schema": [
+            {
+              "type": "object",
+              "name": "data",
+              "sub": [
+                {
+                  "type": "text",
+                  "name": "extractedData"
+                }
+              ]
+            }
+          ]
+        },
+        "meta": [
+          {
+            "type": "object",
+            "name": "data",
+            "sub": [
+              {
+                "type": "text",
+                "name": "extractedData"
+              }
+            ]
+          }
+        ],
+        "outputType": "object"
+      },
+      {
+        "name": "mParams",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{api.data.extractedData}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": false
+      },
+      {
+        "name": "mArray",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mParams.split(', ')}}"
+        },
+        "meta": [],
+        "outputType": "array",
+        "output": false
+      },
+      {
+        "name": "id_type",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "key": "g_id_type",
+          "value": "{{mArray[0].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "state",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "key": "g_state",
+          "value": "{{mArray[1].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "licence_number",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[2].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "dob",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[3].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "expiry",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[4].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "issuance",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[5].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "first_name",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[6].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "initials",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[7].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "last_name",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[8].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "street",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[9].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "city",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[10].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "state_address",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[11].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      },
+      {
+        "name": "zip_code",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{mArray[12].split(': ')[1]}}"
+        },
+        "meta": [],
+        "outputType": "text",
+        "output": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="photoData" appConnect="local" components="{dmxDownload:{},dmxValidator:{},dmxBrowser:{}}" -->
+<dmx-api-action id="save_to_sheet" noload="true" url="/save_to_sheet" method="post" dmx-data:photo1="ls1.data.facePath_1" dmx-data:photo2="ls1.data.facePath_2" dmx-data:id_type="ls1.data.id_type" dmx-data:state="ls1.data.state" dmx-data:licence_number="ls1.data.licence_number" dmx-data:dob="ls1.data.dob" dmx-data:expiry="ls1.data.expiry" dmx-data:issuance="ls1.data.issuance" dmx-data:first_name="ls1.data.first_name" dmx-data:initials="ls1.data.initials" dmx-data:last_name="ls1.data.last_name" dmx-data:street="ls1.data.street" dmx-data:city="ls1.data.city" dmx-data:state_address="ls1.data.state_address" dmx-data:zip_code="ls1.data.zip_code" dmx-on:success="run([{run:{outputType:'text',action:`ls1.set(\'final_image\',data.imageFile)`}},{runJS:{name:'dl_finalk_image',outputType:'text',function:'downloadImage'}}])"></dmx-api-action>
+<meta name="ac:route" content="/photoData">
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 id="pageTitle">Verify Data</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-stretch">
+                <img id="photo-result-1" alt="photo" class="w-100 border rounded p-1" dmx-bind:src="'/uploads/'+ls1.data.facePath_1">
+            </div>
+            <div class="col-12 col-md-6 d-flex align-items-stretch">
+                <img id="photo-result-2" alt="photo" class="w-100 border rounded p-1" dmx-bind:src="'/uploads/'+ls1.data.facePath_2">
+            </div>
+        </div>
+        <form method="post" is="dmx-serverconnect-form" id="serverconnectform1">
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="idType" class="me-3 w-50">Type of ID :</label>
+                    <input id="idType" name="idType" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.id_type" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="idState" class="me-3 w-50">State :</label>
+                    <input id="idState" name="idState" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.state" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="licenceNum" class="me-3 w-50">Licence # :</label>
+                    <input id="licenceNum" name="licenceNum" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.licence_number" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="dob" class="me-3 w-50">Dob :</label>
+                    <input id="dob" name="dob" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.dob" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="expiry" class="me-3 w-50">Expiry :</label>
+                    <input id="expiry" name="expiry" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.expiry" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="issuance" class="me-3 w-50">Date issued :</label>
+                    <input id="issuance" name="issuance" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.issuance" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="firstName" class="me-3 w-50">First name :</label>
+                    <input id="firstName" name="firstName" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.first_name" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="initials" class="me-3 w-50">Middle initials :</label>
+                    <input id="initials" name="initials" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.initials" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="lastName" class="me-3 w-50">Last name :</label>
+                    <input id="lastName" name="lastName" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.last_name" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="street" class="me-3 w-50">Street :</label>
+                    <input id="street" name="street" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.street" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="city" class="me-3 w-50">City :</label>
+                    <input id="city" name="city" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.city" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="adressState" class="me-3 w-50">State :</label>
+                    <input id="adressState" name="adressState" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.state_address" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex align-items-center pt-2">
+                    <label for="zipCode" class="me-3 w-50">Zip code :</label>
+                    <input id="zipCode" name="expiry" type="text" class="form-control me-auto" dmx-bind:value="ls1.data.zip_code" dmx-bind:disabled="save_to_sheet.state.executing" required="">
+                </div>
+            </div>
+            <div class="row pb-5">
+                <div class="col-12 pt-4 text-center">
+                    <button id="save_btn" type="button" class="btn btn-success w-100" dmx-on:click="save_to_sheet.load({})">
+                        <span class="spinner-border spinner-border-sm" role="status" dmx-show="save_to_sheet.state.executing"></span>
+                        <i class="fas fa-save"></i> Save data to sheet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+    function downloadImage() {
+        // Get the image name from localStorage
+        const imgName = localStorage.getItem('dmxState-final_image').replace(/"/g, '');
+        console.log(imgName);
+
+        // Check if imgName is available
+        if (!imgName) {
+            console.error('Image name not found in localStorage.');
+            return;
+        }
+
+        // Construct the relative image path
+        const fullImagePath = `/uploads/${imgName}`;
+        console.log(fullImagePath);
+
+        // Create an anchor element to initiate the download
+        const link = document.createElement('a');
+        link.href = fullImagePath; // Set the href to the relative image path
+        link.download = imgName; // Use the original image name as the download filename
+
+        // Append the anchor to the body, click it, and then remove it
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        localStorage.clear();
+        window.location.href = "/";
+
+    }
+</script>

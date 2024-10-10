@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "path": "/api/dl_file/:imagefile",
+      "exec": "/api/dl_file"
+    },
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/photoResult",
+      "page": "photoResult",
+      "layout": "main"
+    },
+    {
+      "path": "/photoData",
+      "page": "photoData",
+      "layout": "main"
+    }
+  ]
+}

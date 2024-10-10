@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "imagefile"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "fileDownload",
+      "module": "fs",
+      "action": "download",
+      "options": {
+        "path": "{{'/public/uploads/'+$_GET.imagefile}}"
+      },
+      "outputType": "boolean"
+    }
+  }
+}

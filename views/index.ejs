@@ -1,0 +1,52 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" -->
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 id="pageTitle">Photo</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <button id="openCameraBtn" class="btn w-100 btn-success">
+                    <i class="fas fa-user"></i>
+                    Open face camera
+                </button>
+            </div>
+            <div class="col-12 col-md-4">
+                <button id="openCameraBtn2" class="btn w-100 btn-success">
+                    <i class="fas fa-window-close"></i>
+                    Open front camera
+                </button>
+            </div>
+            <div class="col-12 col-md-4">
+                <button id="cancel_btn" class="btn w-100 btn-danger">
+                    <i class="fas fa-window-close"></i>
+                    Restart
+                </button>
+            </div>
+        </div>
+        <div class="overlay pt-3" align="center">
+            <video id="video" autoplay playsinline class="rounded w-100"></video>
+        </div>
+    </div>
+
+    <div class="container center-container" id="video-container">
+        <div class="row pt-3">
+            <div class="col">
+                <button id="close-camera-btn" class="btn btn-secondary pb-1">
+                    <i class="fas fa-times fa-2x"></i>
+
+                </button>
+            </div>
+            <div class="col">
+                <button id="capture_btn" class="btn btn-primary pb-1">
+                    <i class="fas fa-camera fa-2x"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</main>
+<script src="js/photo.js"></script>
+<meta name="ac:route" content="/">

@@ -1,0 +1,10 @@
+{
+  "photoResult.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "photoData.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  }
+}
